@@ -1,0 +1,27 @@
+{
+  "name": "rabbitmq",
+  "version": "1.0.0",
+  "description": "rabbitmq server message qeues",
+  "main": "app.js",
+  "scripts": {
+    "start": "node sender.js",
+    "build": "npm run clean && npm run build:app",
+    "build:app": "babel -d ./lib ./src",
+    "clean": "rm -r ./lib && mkdir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "programming"
+  ],
+  "author": "ldpenal",
+  "license": "MIT",
+  "dependencies": {
+    "amqplib": "0.5.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-env": "1.5.2",
+    "babel-preset-es2017": "^6.24.1"
+  }
+}
