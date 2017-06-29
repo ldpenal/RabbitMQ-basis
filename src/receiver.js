@@ -1,7 +1,8 @@
 import amqp from 'amqplib';
+import Config from './config';
 
 const consumer = async () => {
-  const connection = await amqp.connect('amqp://localhost');
+  const connection = await amqp.connect(Config.RabbitMQ.instanceURL);
   const channel = await connection.createChannel();
   const queue = 'test_queue';
 
@@ -10,10 +11,10 @@ const consumer = async () => {
   channel.consume(
     queue,
     message => {
-      console.log(`Message received ${JSON.stringify(message)} \n`);
+      console.log('Message received ', message.content.toString());
       channel.ack(message);
     },
-    { noAck: false }
+    Config.RabbitMQ.receiverOptions
   );
 };
 
