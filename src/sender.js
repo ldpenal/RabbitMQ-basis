@@ -1,5 +1,5 @@
 import amqp from 'amqplib';
-import Config from './config';
+import * as Config from './config';
 
 console.log(Config);
 
