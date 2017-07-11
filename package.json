@@ -4,7 +4,6 @@
   "description": "rabbitmq server message qeues",
   "main": "app.js",
   "scripts": {
-    "start": "node lib/sender.js",
     "build": "npm run clean && npm run build:app",
     "build:app": "babel -d ./lib ./src",
     "clean": "rm -r ./lib && mkdir lib",

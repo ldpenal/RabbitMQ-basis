@@ -1,5 +1,5 @@
 import amqp from 'amqplib';
-import Config from './config';
+import * as Config from './config';
 
 const consumer = async () => {
   const connection = await amqp.connect(Config.RabbitMQ.instanceURL);
@@ -11,8 +11,8 @@ const consumer = async () => {
   channel.consume(
     queue,
     message => {
-      console.log('Message received ', message.content.toString());
-      channel.ack(message);
+      console.log('Message received ', message.content.toString(), process.env.INSTANCE);
+      setTimeout(() => channel.ack(message), (process.env.INSTANCE == 1) ? 3000 : 10);
     },
     Config.RabbitMQ.receiverOptions
   );

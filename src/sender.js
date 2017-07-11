@@ -10,6 +10,7 @@ const sendData = async (channel, initial, end) => {
 
   channel.sendToQueue('test_queue', Buffer.from(initial.toString()), {
     persistent: true,
+    noAck: false,
   });
 
   setTimeout(() => {
@@ -31,7 +32,7 @@ const producer = async () => {
 
   // channel.sendToQueue(queue, Buffer.from(initial.toString()));
 
-  sendData(channel, 0, 100000);
+  sendData(channel, 0, 20);
 };
 
 producer();

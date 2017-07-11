@@ -10,5 +10,6 @@ export const RabbitMQ = {
   },
   senderOptions: {
     durable: true,
+    noAck: false,
   },
 };
